@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Human Body 3D | Hamsitha
+    </title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- THREE.JS -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+        }
+    }
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <a
+            href="#home"
+            class="brand"
+        >
+
+            <span>
+                ✦
+            </span>
+
+            HUMAN BODY
+
+        </a>
+
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#explore">
+                Explore
+            </a>
+
+            <a href="#organs">
+                My Organs
+            </a>
+
+            <a href="#diseases">
+                Diseases
+            </a>
+
+            <a href="#voice">
+                🎤 AI Voice
+            </a>
+
+        </nav>
+
+
+        <!-- LANGUAGE -->
+
+        <button
+            class="language-btn"
+            id="languageButton"
+            type="button"
+        >
+            TH
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+
+        <!-- =================================================
+             HOME / HERO
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+
+            <!-- LEFT CONTENT -->
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+
+                    ✦ INTERACTIVE HUMAN ANATOMY
+
+                </p>
+
+
+                <h1>
+
+                    Discover
+
+                    <span>
+                        the Human
+                    </span>
+
+                    Body
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Explore the extraordinary complexity
+                    of the human body through an immersive
+                    3D experience.
+
+                </p>
+
+
+                <!-- BUTTONS -->
+
+                <div class="hero-buttons">
+
+
+                    <!-- EXPLORE -->
+
+                    <a
+                        href="#explore"
+                        class="primary-btn"
+                    >
+
+                        Explore the Body
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </a>
+
+
+                    <!-- DISCOVER -->
+
+                    <a
+                        href="#about"
+                        class="secondary-btn"
+                    >
+
+                        Discover More
+
+                    </a>
+
+
+                    <!-- VOICE -->
+
+                    <button
+                        id="voiceButton"
+                        class="voice-btn"
+                        type="button"
+                    >
+
+                        🎤
+
+                        <span id="voiceButtonText">
+                            Talk to me
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- VOICE STATUS -->
+
+                <div
+                    id="voiceStatus"
+                    class="voice-status"
+                >
+
+                    <span class="voice-dot"></span>
+
+                    <span id="voiceText">
+
+                        Voice Assistant Ready
+
+                    </span>
+
+                </div>
+
+
+                <!-- LANGUAGE INFO -->
+
+                <div class="language-info">
+
+                    <span>
+                        🗣️
+                    </span>
+
+                    <span>
+                        Thanglish Voice Support
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 3D BODY AREA
+            ================================================== -->
+
+            <div class="body-stage">
+
+
+                <!-- ORBIT DECORATION -->
+
+                <div
+                    class="orbit orbit-one"
+                ></div>
+
+                <div
+                    class="orbit orbit-two"
+                ></div>
+
+
+                <!-- THREE.JS -->
+
+                <div id="three-container"></div>
+
+
+                <!-- ORGAN EXPLANATION
+                     CREATED / USED BY JS -->
+
+
+
+                <!-- ZOOM -->
+
+                <div class="zoom-controls">
+
+                    <button
+                        id="zoomIn"
+                        type="button"
+                        title="Zoom In"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        id="zoomOut"
+                        type="button"
+                        title="Zoom Out"
+                    >
+                        −
+                    </button>
+
+                </div>
+
+
+                <!-- FLOATING STARS -->
+
+                <div class="floating-star star-a">
+                    ✦
+                </div>
+
+                <div class="floating-star star-b">
+                    ✧
+                </div>
+
+                <div class="floating-star star-c">
+                    ✦
+                </div>
+
+                <div class="floating-star star-d">
+                    ✧
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INFORMATION STRIP
+        ================================================== -->
+
+        <section class="intro-strip">
+
+
+            <div class="strip-item">
+
+                <span class="strip-number">
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        EXPLORE
+                    </strong>
+
+                    <p>
+                        Interactive 3D anatomy
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="strip-item">
+
+                <span class="strip-number">
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        UNDERSTAND
+                    </strong>
+
+                    <p>
+                        Organs, functions & diseases
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="strip-item">
+
+                <span class="strip-number">
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        DISCOVER
+                    </strong>
+
+                    <p>
+                        Learn with AI & voice
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPLORE
+        ================================================== -->
+
+        <section
+            id="explore"
+            class="page-section"
+        >
+
+            <span>
+                ✦
+            </span>
+
+            <p>
+                3D BODY EXPLORER
+            </p>
+
+            <h2>
+                Explore the Human Body
+            </h2>
+
+            <p class="section-description">
+
+                Rotate, zoom and interact with
+                the 3D human body to discover
+                its major organs.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MEET MY ORGANS
+        ================================================== -->
+
+        <section
+            id="organs"
+            class="organs-section"
+        >
+
+            <div class="organs-heading">
+
+                <span class="organs-kicker">
+                    ✦ INTERACTIVE ORGANS
+                </span>
+
+                <h2>
+                    Meet My Organs
+                </h2>
+
+                <p>
+
+                    Click an organ to bring its
+                    3D model forward, explore it,
+                    and talk to it using your voice.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ORGAN CARDS -->
+
+            <div class="organs-grid">
+
+
+                <!-- HEART -->
+
+                <button
+                    class="organ-card"
+                    type="button"
+                >
+
+                    <div class="organ-icon">
+                        ❤️
+                    </div>
+
+                    <div class="organ-label">
+                        HEART
+                    </div>
+
+                    <h3>
+                        Heart
+                    </h3>
+
+                    <p>
+                        Pumps blood throughout
+                        the body.
+                    </p>
+
+                </button>
+
+
+
+                <!-- BRAIN -->
+
+                <button
+                    class="organ-card"
+                    type="button"
+                >
+
+                    <div class="organ-icon">
+                        🧠
+                    </div>
+
+                    <div class="organ-label">
+                        BRAIN
+                    </div>
+
+                    <h3>
+                        Brain
+                    </h3>
+
+                    <p>
+                        Controls the nervous
+                        system and body.
+                    </p>
+
+                </button>
+
+
+
+                <!-- LUNGS -->
+
+                <button
+                    class="organ-card"
+                    type="button"
+                >
+
+                    <div class="organ-icon">
+                        🫁
+                    </div>
+
+                    <div class="organ-label">
+                        LUNGS
+                    </div>
+
+                    <h3>
+                        Lungs
+                    </h3>
+
+                    <p>
+                        Exchange oxygen and
+                        carbon dioxide.
+                    </p>
+
+                </button>
+
+
+
+                <!-- LIVER -->
+
+                <button
+                    class="organ-card"
+                    type="button"
+                >
+
+                    <div class="organ-icon">
+                        🟤
+                    </div>
+
+                    <div class="organ-label">
+                        LIVER
+                    </div>
+
+                    <h3>
+                        Liver
+                    </h3>
+
+                    <p>
+                        Helps in metabolism
+                        and digestion.
+                    </p>
+
+                </button>
+
+
+
+                <!-- KIDNEY -->
+
+                <button
+                    class="organ-card"
+                    type="button"
+                >
+
+                    <div class="organ-icon">
+                        🫘
+                    </div>
+
+                    <div class="organ-label">
+                        KIDNEY
+                    </div>
+
+                    <h3>
+                        Kidney
+                    </h3>
+
+                    <p>
+                        Filters blood and
+                        forms urine.
+                    </p>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             HOW IT WORKS
+        ================================================== -->
+
+        <section
+            id="how"
+            class="page-section"
+        >
+
+            <span>
+                ✧
+            </span>
+
+            <p>
+                HOW IT WORKS
+            </p>
+
+            <h2>
+                Explore. Interact. Learn.
+            </h2>
+
+            <p class="section-description">
+
+                Select an organ, watch the
+                3D model respond, and ask
+                questions using your voice.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DISEASE EXPLORER
+        ================================================== -->
+
+        <section
+            id="diseases"
+            class="disease-section"
+        >
+
+
+            <div class="disease-heading">
+
+                <span class="disease-kicker">
+                    ✧ DISEASE EXPLORER
+                </span>
+
+                <h2>
+                    Understand Diseases
+                </h2>
+
+                <p>
+
+                    Explore common diseases related
+                    to major human organs, their causes,
+                    symptoms and prevention.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- DISEASE GRID -->
+
+            <div class="disease-grid">
+
+
+                <!-- HYPERTENSION -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        ❤️
+                    </div>
+
+                    <div class="disease-organ">
+                        HEART
+                    </div>
+
+                    <h3>
+                        Hypertension
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Persistently high blood pressure.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        Often no noticeable symptoms;
+                        severe cases may cause headache
+                        or dizziness.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Regular exercise, balanced diet,
+                        less salt and regular check-ups.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- ASTHMA -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        🫁
+                    </div>
+
+                    <div class="disease-organ">
+                        LUNGS
+                    </div>
+
+                    <h3>
+                        Asthma
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Inflammation and narrowing
+                        of the airways.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        Wheezing, coughing,
+                        chest tightness and
+                        breathing difficulty.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Avoid known triggers and
+                        follow prescribed treatment.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- STROKE -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        🧠
+                    </div>
+
+                    <div class="disease-organ">
+                        BRAIN
+                    </div>
+
+                    <h3>
+                        Stroke
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Interruption of blood supply
+                        to part of the brain.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        Sudden weakness, speech
+                        difficulty, confusion or
+                        loss of balance.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Control blood pressure,
+                        exercise and maintain a
+                        healthy lifestyle.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- KIDNEY STONES -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        🫘
+                    </div>
+
+                    <div class="disease-organ">
+                        KIDNEY
+                    </div>
+
+                    <h3>
+                        Kidney Stones
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Crystals or mineral deposits
+                        forming in the urinary system.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        Severe side or back pain,
+                        painful urination and sometimes
+                        blood in urine.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Drink enough water and maintain
+                        a balanced diet.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- FATTY LIVER -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        🟤
+                    </div>
+
+                    <div class="disease-organ">
+                        LIVER
+                    </div>
+
+                    <h3>
+                        Fatty Liver
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Excess fat accumulation
+                        in liver cells.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        May have no symptoms;
+                        some people may experience
+                        tiredness or discomfort.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Healthy weight, physical activity
+                        and balanced food habits.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- ANAEMIA -->
+
+                <div
+                    class="disease-card"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <div class="disease-icon">
+                        🩸
+                    </div>
+
+                    <div class="disease-organ">
+                        BLOOD
+                    </div>
+
+                    <h3>
+                        Anaemia
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Cause:
+                        </strong>
+
+                        Reduced healthy red blood cells
+                        or haemoglobin.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Symptoms:
+                        </strong>
+
+                        Tiredness, weakness, pale skin
+                        and shortness of breath.
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Prevention:
+                        </strong>
+
+                        Adequate iron and nutrient-rich
+                        foods and medical advice when needed.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AI VOICE
+        ================================================== -->
+
+        <section
+            id="voice"
+            class="page-section voice-section"
+        >
+
+
+            <span>
+                🎤
+            </span>
+
+            <p>
+                AI VOICE ASSISTANT
+            </p>
+
+            <h2>
+                Ask. Listen. Discover.
+            </h2>
+
+            <p class="section-description">
+
+                Ask questions naturally using
+                your voice.
+
+                <br>
+
+                <strong>
+                    Thanglish supported.
+                </strong>
+
+            </p>
+
+
+
+            <!-- VOICE BUTTON -->
+
+            <button
+                id="voiceMainButton"
+                class="voice-main-btn"
+                type="button"
+            >
+
+                🎤
+
+                <span>
+                    Start Voice Assistant
+                </span>
+
+            </button>
+
+
+
+            <!-- QUESTIONS -->
+
+            <div class="voice-examples">
+
+                <p>
+                    Try saying:
+                </p>
+
+
+                <div class="example-list">
+
+                    <span>
+                        "Heart enga irukku?"
+                    </span>
+
+                    <span>
+                        "Brain pathi sollu"
+                    </span>
+
+                    <span>
+                        "Lungs epdi work aagum?"
+                    </span>
+
+                    <span>
+                        "Kidney oda function enna?"
+                    </span>
+
+                    <span>
+                        "Liver-ku enna disease?"
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer
+        id="about"
+    >
+
+
+        <div class="footer-star">
+            ✦
+        </div>
+
+
+        <h3>
+            HUMAN BODY 3D
+        </h3>
+
+
+        <p>
+
+            An interactive journey
+            through the human body.
+
+        </p>
+
+
+        <div class="creator">
+
+            Created by
+
+            <strong>
+                Hamsitha S
+            </strong>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Hamsitha S ·
+            Science Expo Project
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="main.js"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1368 @@
+/* =========================================================
+   HUMAN BODY 3D
+   FULL STYLE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #050816;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(5, 8, 22, 0.75);
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: #8de8ff;
+    font-size: 18px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    color: #cbd3e8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.navbar nav a:hover {
+    color: #7ce4ff;
+}
+
+.language-btn {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    padding: 8px 14px;
+
+    border-radius: 22px;
+
+    font-size: 12px;
+
+    transition: 0.25s ease;
+}
+
+.language-btn:hover {
+    background: rgba(100, 220, 255, 0.12);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: 72px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 70% 45%,
+            rgba(32, 108, 190, 0.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #050816 0%,
+            #071126 100%
+        );
+}
+
+/* =========================================================
+   HERO LEFT
+========================================================= */
+
+.hero-content {
+    width: 45%;
+
+    padding-left: 7%;
+    padding-right: 20px;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+.eyebrow {
+    margin-bottom: 18px;
+
+    color: #83dfff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+}
+
+.hero-content h1 {
+    font-size: clamp(52px, 5vw, 78px);
+
+    line-height: 0.98;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 24px;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #78dfff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    max-width: 470px;
+
+    color: #aeb8d0;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 28px;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.primary-btn,
+.secondary-btn,
+.voice-btn {
+    min-height: 46px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    border-radius: 25px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    gap: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2f72f7,
+            #7447e9
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(65, 85, 230, 0.25);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 34px rgba(65, 85, 230, 0.38);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #d8deef;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.voice-btn {
+    gap: 8px;
+
+    border: 1px solid rgba(125, 220, 255, 0.20);
+
+    background: rgba(70, 150, 220, 0.08);
+
+    color: #dff8ff;
+}
+
+.voice-btn:hover {
+    background: rgba(70, 150, 220, 0.16);
+}
+
+/* =========================================================
+   VOICE STATUS
+========================================================= */
+
+.voice-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #8e9bb7;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+.voice-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #65e8a7;
+
+    box-shadow:
+        0 0 10px rgba(101, 232, 167, 0.65);
+}
+
+.language-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #8794af;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   3D BODY STAGE
+========================================================= */
+
+.body-stage {
+    width: 55%;
+    height: calc(100vh - 72px);
+
+    min-height: 650px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(35, 102, 180, 0.14),
+            transparent 58%
+        );
+}
+
+#three-container {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+}
+
+#three-container canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* =========================================================
+   GLOW ORBITS
+========================================================= */
+
+.orbit {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    border: 1px solid rgba(110, 205, 255, 0.12);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-18deg);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.orbit-one {
+    width: 500px;
+    height: 180px;
+}
+
+.orbit-two {
+    width: 620px;
+    height: 230px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(18deg);
+}
+
+/* =========================================================
+   FLOATING STARS
+========================================================= */
+
+.floating-star {
+    position: absolute;
+
+    color: rgba(145, 232, 255, 0.75);
+
+    font-size: 18px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    animation: starFloat 3s ease-in-out infinite;
+}
+
+.star-a {
+    top: 20%;
+    right: 17%;
+}
+
+.star-b {
+    top: 34%;
+    right: 6%;
+
+    animation-delay: 0.8s;
+}
+
+.star-c {
+    bottom: 27%;
+    left: 14%;
+
+    animation-delay: 1.5s;
+}
+
+.star-d {
+    bottom: 16%;
+    right: 21%;
+
+    animation-delay: 2s;
+}
+
+@keyframes starFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   ORGAN EXPLANATION PANEL
+   TOP OF 3D AREA
+========================================================= */
+
+.talking-organ-panel {
+    position: absolute !important;
+
+    top: 20px !important;
+
+    left: 50% !important;
+
+    right: auto !important;
+
+    width: 460px !important;
+
+    max-width: 70% !important;
+
+    max-height: 120px !important;
+
+    overflow-y: auto !important;
+
+    padding: 11px 16px !important;
+
+    background:
+        rgba(7, 12, 27, 0.78) !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14) !important;
+
+    border-radius: 15px !important;
+
+    backdrop-filter: blur(10px) !important;
+
+    color: #ffffff !important;
+
+    text-align: center !important;
+
+    z-index: 200 !important;
+
+    transform:
+        translateX(-50%) !important;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.25s ease;
+}
+
+.talking-organ-panel.active {
+    opacity: 1 !important;
+
+    pointer-events: auto !important;
+}
+
+.talking-organ-panel h2 {
+    font-size: 18px !important;
+
+    margin-bottom: 4px !important;
+}
+
+.talking-organ-speech {
+    margin: 0 !important;
+
+    padding: 2px 4px !important;
+
+    background: transparent !important;
+
+    font-size: 12px !important;
+
+    line-height: 1.45 !important;
+}
+
+.talking-organ-info {
+    margin-top: 4px !important;
+
+    font-size: 10px !important;
+
+    line-height: 1.4 !important;
+
+    color: #aebbd4 !important;
+}
+
+.talking-organ-panel::-webkit-scrollbar {
+    width: 3px;
+}
+
+.talking-organ-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.24);
+
+    border-radius: 10px;
+}
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+.zoom-controls {
+    position: absolute;
+
+    right: 22px;
+    bottom: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    z-index: 50;
+}
+
+.zoom-controls button {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    background:
+        rgba(8, 14, 30, 0.76);
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    backdrop-filter: blur(8px);
+
+    transition: 0.25s ease;
+}
+
+.zoom-controls button:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(50, 110, 180, 0.45);
+}
+
+/* =========================================================
+   INTRO STRIP
+========================================================= */
+
+.intro-strip {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+}
+
+.strip-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 27px 7%;
+
+    background: #071126;
+}
+
+.strip-number {
+    color: #72ddff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.strip-item strong {
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+.strip-item p {
+    margin-top: 4px;
+
+    color: #8491ac;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   GENERAL PAGE SECTIONS
+========================================================= */
+
+.page-section {
+    min-height: 50vh;
+
+    padding: 110px 7%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: #071126;
+}
+
+.page-section > span {
+    color: #79ddff;
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+}
+
+.page-section > p:first-of-type {
+    color: #83dfff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.page-section h2 {
+    font-size: 42px;
+
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+}
+
+.section-description {
+    max-width: 650px;
+
+    color: #aeb8d0;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+/* =========================================================
+   MEET MY ORGANS
+========================================================= */
+
+.organs-section {
+    padding: 105px 7%;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(44, 104, 170, 0.13),
+            transparent 48%
+        ),
+        #050b1b;
+}
+
+.organs-heading {
+    max-width: 760px;
+
+    margin: 0 auto 48px;
+
+    text-align: center;
+}
+
+.organs-kicker {
+    display: block;
+
+    color: #7cdeff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.organs-heading h2 {
+    font-size: 42px;
+
+    margin-bottom: 14px;
+}
+
+.organs-heading p {
+    color: #aeb8d0;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+.organs-grid {
+    max-width: 1120px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 17px;
+}
+
+.organ-card {
+    min-height: 190px;
+
+    padding: 21px 14px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.organ-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(112, 221, 255, 0.40);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+.organ-card-selected {
+    transform:
+        translateY(-8px) scale(1.03) !important;
+
+    border-color:
+        rgba(110, 231, 255, 0.65) !important;
+
+    box-shadow:
+        0 0 30px
+        rgba(80, 190, 255, 0.18);
+}
+
+.organ-icon {
+    font-size: 43px;
+
+    margin-bottom: 10px;
+}
+
+.organ-label {
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: #77ddff;
+
+    margin-bottom: 5px;
+}
+
+.organ-card h3 {
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+.organ-card p {
+    color: #aab5cd;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+/* =========================================================
+   DISEASE SECTION
+========================================================= */
+
+.disease-section {
+    padding: 110px 7%;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(72, 80, 165, 0.13),
+            transparent 48%
+        ),
+        #050816;
+}
+
+.disease-heading {
+    max-width: 780px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.disease-kicker {
+    display: block;
+
+    color: #7edfff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.disease-heading h2 {
+    font-size: 42px;
+
+    line-height: 1.15;
+
+    margin-bottom: 14px;
+}
+
+.disease-heading p {
+    color: #abb6d0;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.disease-grid {
+    max-width: 1120px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.disease-card {
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.disease-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(108, 222, 255, 0.34);
+}
+
+.disease-selected {
+    transform:
+        translateY(-7px) scale(1.02);
+
+    border-color:
+        rgba(110, 231, 255, 0.65);
+
+    box-shadow:
+        0 0 28px rgba(80, 190, 255, 0.16);
+}
+
+.disease-icon {
+    font-size: 36px;
+
+    margin-bottom: 12px;
+}
+
+.disease-organ {
+    color: #7cdfff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 7px;
+}
+
+.disease-card h3 {
+    font-size: 20px;
+
+    margin-bottom: 14px;
+}
+
+.disease-card p {
+    color: #aab5cd;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+
+    margin-top: 8px;
+}
+
+.disease-card strong {
+    color: #ffffff;
+}
+
+/* =========================================================
+   VOICE SECTION
+========================================================= */
+
+.voice-section {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(56, 88, 180, 0.13),
+            transparent 48%
+        ),
+        #071126;
+}
+
+.voice-main-btn {
+    margin-top: 26px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 30px rgba(60, 75, 220, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.voice-main-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 36px rgba(60, 75, 220, 0.38);
+}
+
+.voice-examples {
+    margin-top: 35px;
+
+    max-width: 700px;
+
+    width: 100%;
+}
+
+.voice-examples > p {
+    color: #8f9ab3;
+
+    font-size: 11px;
+
+    margin-bottom: 13px;
+}
+
+.example-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 9px;
+}
+
+.example-list span {
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    color: #c9d1e4;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 55px 7%;
+
+    text-align: center;
+
+    background: #030611;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-star {
+    color: #77dfff;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+footer h3 {
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #7e8ba5;
+
+    font-size: 12px;
+
+    margin-bottom: 14px;
+}
+
+.creator {
+    color: #aab5cb;
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.creator strong {
+    color: #ffffff;
+}
+
+.copyright {
+    color: #626e84;
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .hero-content {
+        width: 43%;
+    }
+
+    .body-stage {
+        width: 57%;
+    }
+
+    .hero-content h1 {
+        font-size: 54px;
+    }
+
+    .organs-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .disease-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .navbar {
+        height: 62px;
+
+        padding: 0 18px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding-top: 62px;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .hero-content {
+        width: 100%;
+
+        padding:
+            45px 22px 20px;
+
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .voice-status,
+    .language-info {
+        justify-content: center;
+    }
+
+    .body-stage {
+        width: 100%;
+
+        height: 650px;
+
+        min-height: 650px;
+    }
+
+    .talking-organ-panel {
+        top: 12px !important;
+
+        width: 88% !important;
+
+        max-width: 88% !important;
+
+        max-height: 125px !important;
+    }
+
+    .orbit-one {
+        width: 390px;
+        height: 145px;
+    }
+
+    .orbit-two {
+        width: 470px;
+        height: 180px;
+    }
+
+    .intro-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .strip-item {
+        justify-content: center;
+    }
+
+    .page-section,
+    .organs-section,
+    .disease-section {
+        padding:
+            80px 20px;
+    }
+
+    .page-section h2,
+    .organs-heading h2,
+    .disease-heading h2 {
+        font-size: 32px;
+    }
+
+    .organs-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 13px;
+    }
+
+    .disease-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .hero-content h1 {
+        font-size: 39px;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .voice-btn {
+        width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .organs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .body-stage {
+        height: 600px;
+
+        min-height: 600px;
+    }
+
+    .zoom-controls {
+        right: 12px;
+        bottom: 15px;
+    }
+
+}
