@@ -1,207 +1,193 @@
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 dotenv.config();
 
+/* =========================================================
+   FILE PATH
+========================================================= */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+/* =========================================================
+   APP SETUP
+========================================================= */
+
 const app = express();
+app.use(express.static(__dirname));
+app.use(express.json({ limit: "1mb" }));
 
-app.use(cors());
-app.use(express.json());
-app.get("/", (req, res) => {
-    res.sendFile(process.cwd() + "/index.html");
+/* Serve the complete website */
+app.use(express.static(__dirname));
+
+
+/* =========================================================
+   OPENAI SETUP
+========================================================= */
+
+const apiKey = process.env.OPENAI_API_KEY;
+
+const client = apiKey
+    ? new OpenAI({
+        apiKey: apiKey
+    })
+    : null;
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+app.get("/", function (req, res) {
+
+    res.sendFile(
+        path.join(
+            __dirname,
+            "index.html"
+        )
+    );
+
 });
 
-app.get("/main.js", (req, res) => {
-    res.sendFile(process.cwd() + "/main.js");
+
+/* =========================================================
+   HEALTH CHECK
+========================================================= */
+
+app.get("/health", function (req, res) {
+
+    res.json({
+        status: "ok",
+        message: "Human Body server is running"
+    });
+
 });
 
-app.get("/style.css", (req, res) => {
-    res.sendFile(process.cwd() + "/style.css");
-});
 
-app.use(
-    "/models",
-    express.static(process.cwd() + "/models")
-);
-const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+/* =========================================================
+   AI BIOLOGY ASSISTANT
+========================================================= */
 
+app.post(
+    "/api/biology",
+    async function (req, res) {
 
-app.post("/api/biology", async (req, res) => {
+        try {
 
-    try {
-
-        const question =
-            String(req.body.question || "").trim();
-
-        if (!question) {
-
-            return res.status(400).json({
-                error: "Question is required."
-            });
-
-        }
+            const question =
+                String(
+                    req.body?.question || ""
+                ).trim();
 
 
-        /* =============================================
-           TEXT ANSWER
-        ============================================= */
+            if (!question) {
 
-        const response =
-            await client.responses.create({
+                return res.status(400).json({
+                    error:
+                        "Question is required."
+                });
 
-                model: "gpt-5",
+            }
 
-                instructions: `
-You are a friendly Human Biology AI Assistant
+
+            if (!client) {
+
+                return res.status(500).json({
+                    error:
+                        "OPENAI_API_KEY is missing."
+                });
+
+            }
+
+
+            const response =
+                await client.responses.create({
+
+                    model: "gpt-6-luna",
+
+                    instructions: `
+You are the Human Biology AI Assistant
 inside a school science-expo project called
 "3D Interactive Talking Human Body".
 
 Answer questions about:
-human anatomy, organs, physiology,
-human biology, diseases and the human body.
+- human body
+- human anatomy
+- organs
+- physiology
+- human biology
+- general diseases
 
-Use easy language suitable for a school student.
+Use simple language suitable for a school student.
 
 Explain clearly and naturally.
 
-For medical questions:
-give educational information only.
-Do not diagnose the user.
+For medical questions, provide educational
+information only. Do not diagnose the user.
 
-Stay focused on biology and the human body.
+Stay focused on human biology.
 `,
 
-                input: question
-
-            });
-
-
-        const answer =
-            response.output_text ||
-            "Sorry, answer generate panna mudiyala.";
-
-
-        /* =============================================
-           EDUCATIONAL IMAGE / DIAGRAM
-        ============================================= */
-
-        const imagePrompt = `
-Create a clean educational biology diagram
-for a school science exhibition.
-
-Topic:
-${question}
-
-Requirements:
-- scientifically appropriate
-- simple and easy to understand
-- human biology / anatomy focused
-- clear labeled structures when useful
-- dark-blue or clean educational background
-- no graphic injury
-- no unnecessary text
-- suitable for an 11th-standard student
-`;
-
-        let image = null;
-
-
-        try {
-
-            const imageResponse =
-                await client.images.generate({
-
-                    model: "gpt-image-2",
-
-                    prompt: imagePrompt,
-
-                    size: "1024x1024",
-
-                    quality: "low"
+                    input: question
 
                 });
 
 
-            if (
-                imageResponse.data &&
-                imageResponse.data.length > 0
-            ) {
+            const answer =
+                response.output_text ||
+                "Sorry, answer generate panna mudiyala.";
 
-                const base64 =
-                    imageResponse.data[0].b64_json;
 
-                if (base64) {
-
-                    image =
-                        `data:image/png;base64,${base64}`;
-
-                }
-
-            }
+            res.json({
+                answer: answer
+            });
 
         }
 
-        catch (imageError) {
+        catch (error) {
 
             console.error(
-                "IMAGE GENERATION ERROR:",
-                imageError
+                "OPENAI ERROR:",
+                error
             );
 
-            /* Answer still works even if image fails */
 
-            image = null;
+            res.status(500).json({
+
+                error:
+                    error?.message ||
+                    "OpenAI request failed."
+
+            });
 
         }
 
-
-        /* =============================================
-           SEND BOTH TO WEBSITE
-        ============================================= */
-
-        res.json({
-
-            answer: answer,
-
-            image: image
-
-        });
-
     }
+);
 
-    catch (error) {
 
-        console.error(
-            "AI ERROR:",
-            error
-        );
-
-        res.status(500).json({
-
-            error:
-                "AI assistant could not answer right now."
-
-        });
-
-    }
-
-});
-
+/* =========================================================
+   START SERVER
+========================================================= */
 
 const PORT =
-    process.env.PORT || 3000;
+    Number(
+        process.env.PORT || 10000
+    );
 
 
 app.listen(
     PORT,
-    () => {
+    "0.0.0.0",
+    function () {
 
         console.log(
-            `🧠 Biology AI running at http://localhost:${PORT}`
+            `🧠 Human Body server running on port ${PORT}`
         );
 
     }
